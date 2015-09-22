@@ -8,7 +8,36 @@
 </head>
 
 <body>
-    <div class="container"></div>
+    <div id="topBox">
+		<img id = "gitImage" src="/images/gitScreenShotCopy.png"/>
+		<input type="text" placeholder="Search GitHub"></input>
+	</div>
+
+	<div id="container">
+		<div id="leftColumn">
+			<img id = "profilePic"/>
+			<h1 id="name"></h1>
+			<p id = "login"></p>
+			<hr>
+			<p id = "location"></p>
+			<p id = "email"></p>
+			<p id="blog"></p>
+			<!-- <p id="html_url"></p> -->
+			<p id="created_at"></p>
+			<p id="followers"></p>
+			<p id="starred"></p>
+			<p id='following'></p>	
+		</div>
+
+		<div id="rightColumn">
+			<ul id="listedRepos">
+
+			</ul>
+		</div>
+	</div>
+
     <script type="text/javascript" src="./app-browserify.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+
 </body>
 </html>

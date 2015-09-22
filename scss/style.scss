@@ -73,3 +73,100 @@ img {
  * YOUR CODE HERE
  */
 
+
+ #container {
+    display: flex;
+    margin: auto;
+    max-width: 880px;
+    margin-top: 28px;
+
+}
+
+#topBox {
+    max-width: 100%;
+    background-color: #f5f5f5;
+    height:  50px;
+    
+}
+
+input {
+    height: 25px;
+    font-size: 12px;
+    font-family: Palatino;
+    margin-left: 70px;
+    width: 25%;
+    left: 22%;
+    position: absolute;
+    top: 1.5%;
+}
+
+#leftColumn {
+    flex: 1;
+
+}
+
+#followers, #following, #starred {
+    display: inline-block;
+    margin-top: 2%;
+    font-family: Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif;
+    
+}
+
+#login {
+    font-size: 25px;
+    color: gray;
+    margin: 2px;
+}
+
+#location, #email, #blog, #html_url {
+    margin-bottom: -2%;
+}
+
+#rightColumn {
+    flex: 3;
+    font-family: Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif;
+}
+
+.subInfo {
+    font-family: Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif;
+    font-size: 16px;
+    color: #000000;
+}
+
+
+#profilePic {
+    width: 230px;
+    height: 230px;
+    border-radius: 5%;
+    /*width: 100%;
+    height: 100%*/
+}
+
+#listedRepos > li {
+    list-style-type: none;
+    font-size: 25px;
+    color: #4078c0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif
+
+}
+
+#gitImage {
+    position: absolute;
+    left: 23%;
+    top: 1%;
+}
+
+#name {
+    margin-bottom: 0px;
+    font-size: 30px;
+}
+
+@media all and (max-width: 800px) {
+
+    #container {
+        display: block;
+    }
+} 
+
