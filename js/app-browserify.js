@@ -21,36 +21,18 @@ var $ = require('jquery'),
 window.onload = function(){
 	var urlRoot= 'https://api.github.com/users/'
 
-	function putInto(property,element,responseObj,image){
-		if (image === 1){
-			$(element)[0].src = responseObj[property]
-		}
-		else {
-			$(element)[0].innerHTML = responseObj[property];
-		}
+	var createProfile = function(responseObj) {
+		console.log(responseObj);
+
+		$("#profilePic").attr("src",responseObj.avatar_url);
+		$("#login")[0].innerHTML = responseObj.login; 
+		$("#name")[0].innerHTML = responseObj.name;
+		$('#created_at')[0].innerHTML = `Joined ${responseObj.created_at}`;
+		$("#followers")[0].innerHTML = `<span> ${responseObj.followers} </span> <br> <p> Followers </p>`;
+		$("#starred")[0].innerHTML = `<span> 0 </span> <br> <p> Starred </p>`;
+		$("#following")[0].innerHTML =  `<span> ${responseObj.following} </span> <br> <p> Following </p>`; 
 	}
 
-	var setupPropsOnPage = (responseObj) => {
-		console.log(responseObj)
-		putInto('avatar_url', '#profilePic', responseObj,1)
-		putInto('name','#name',responseObj)
-		putInto('login','#login',responseObj)
-		putInto('location', '#location',responseObj)
-		putInto('email', '#email',responseObj)
-		putInto('blog', '#blog',responseObj)
-		// putInto('html_url', '#html_url',responseObj)
-		// putInDate('created_at', '#created_at',responseObj)
-		putInto('followers', '#followers',responseObj)
-		putInto('following', '#following',responseObj)
-	}
-
-
-	var formatListEl = (repObj) => {
-		console.log(repObj)
-		var repoLine = "<a href=" + repObj.html_url + ">" +repObj.name +"</a>"
-			repoLine += '<p class= "subInfo">' + repObj.updated_at + '</p>'
-		return repoLine;
-	}
 
 	var makeRepos = (repoArr) => {
 		console.log(repoArr)
@@ -58,11 +40,8 @@ window.onload = function(){
 		ulElement.innerHTML = ''
 		
 		repoArr.forEach(function(repObj){
-			var listElContent = formatListEl(repObj)
-			var newRepoItem = document.createElement('li')
 			var newLine = document.createElement('hr')
-			newRepoItem.innerHTML = listElContent
-			ulElement.appendChild(newRepoItem)
+			ulElement.innerHTML += "<div class = repos>" + "<a href=" + repObj.url + " class = repoName>" + repObj.name + "</a>" + "<br>" + "<p class = createdOn>" + repObj.created_at + "</p>"
 			ulElement.appendChild(newLine)
 		})
 	}
@@ -78,7 +57,7 @@ window.onload = function(){
 
 		var ajaxParams = {
 			url: urlRoot + query.replace('#', ''),
-			success: setupPropsOnPage
+			success: createProfile
 		}
 		
 		$.ajax(ajaxParams)
@@ -115,7 +94,7 @@ window.onload = function(){
 
 	var thisRouter = new githubRouter()
 
-	var handleInput = function(){
+	var changeUser = () => {
 		var inputEl = $('input')[0]
 		inputEl.onkeypress = getUserQuery
 		var query = location.hash
@@ -129,7 +108,7 @@ window.onload = function(){
 	// 	doAjax(query)
 	// }
 
-	handleInput()
+	changeUser()
 
 }
 
